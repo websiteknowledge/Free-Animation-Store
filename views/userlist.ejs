@@ -1,0 +1,44 @@
+<%- include('partials/header', { title: 'Manage Users' }) %>
+
+<h1>User Management</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Role</th>
+      <th>Promote/Demote</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% users.forEach(user => { %>
+      <tr>
+        <td><%= user.username %></td>
+        <td><%= user.isAdmin ? 'Admin' : 'User' %></td>
+        <td>
+          <% if (user.id !== userSession.id) { %>
+            <form method="POST" action="/admin/toggle-admin/<%= user.id %>">
+              <button type="submit">
+                <%= user.isAdmin ? 'Demote to User' : 'Promote to Admin' %>
+              </button>
+            </form>
+          <% } else { %>
+            <em>(you)</em>
+          <% } %>
+        </td>
+        <td>
+          <% if (user.id !== userSession.id) { %>
+            <form method="POST" action="/admin/delete-user/<%= user.id %>" onsubmit="return confirm('Delete this user?');">
+              <button type="submit">Delete</button>
+            </form>
+          <% } else { %>
+            <em>(you)</em>
+          <% } %>
+        </td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+
+<%- include('partials/footer') %>

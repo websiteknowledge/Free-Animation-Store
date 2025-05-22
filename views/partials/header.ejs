@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="navbar">
+    <a href="/">Home</a>
+    <% if (!user) { %>
+      <a href="/login">Login</a>
+      <a href="/register">Register</a>
+    <% } else { %>
+      <% if (user.isAdmin) { %>
+        <a href="/admin/dashboard">Dashboard</a>
+        <a href="/admin/upload">Upload</a>
+      <% } %>
+      <span>Welcome, <%= user.username %></span>
+      <a href="/logout">Logout</a>
+    <% } %>
+  </div>
+  <div class="container">

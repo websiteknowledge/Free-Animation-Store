@@ -1,0 +1,10 @@
+<%- include('partials/header', { title: 'Register' }) %>
+<h1>Register</h1>
+<form method="POST" action="/register">
+  <label>Username:</label>
+  <input type="text" name="username" required><br/>
+  <label>Password:</label>
+  <input type="password" name="password" required><br/>
+  <button type="submit">Register</button>
+</form>
+<%- include('partials/footer') %>

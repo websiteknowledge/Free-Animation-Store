@@ -1,0 +1,12 @@
+<%- include('partials/header', { title: 'Home' }) %>
+<h1>Available Videos</h1>
+<ul>
+  <% videos.forEach(video => { %>
+    <li>
+      <strong><%= video.title %></strong><br/>
+      <img src="/videos/<%= video.thumbnail %>" width="150"><br/>
+      <a href="/videos/<%= video.filename %>" download class="download-btn">Download Video</a>
+    </li>
+  <% }) %>
+</ul>
+<%- include('partials/footer') %>

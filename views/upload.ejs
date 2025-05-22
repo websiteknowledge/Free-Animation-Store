@@ -1,0 +1,16 @@
+<%- include('partials/header', { title: 'Upload' }) %>
+<h1>Upload New Video</h1>
+<form id="uploadForm" enctype="multipart/form-data">
+  <label>Title</label>
+  <input type="text" name="title" required><br/>
+  <label>Description</label>
+  <textarea name="description" required></textarea><br/>
+  <label>Video File</label>
+  <input type="file" name="video" required><br/>
+  <label>Thumbnail</label>
+  <input type="file" name="thumbnail" required><br/>
+  <div id="progressContainer"><div id="progressBar">0%</div></div>
+  <button type="submit">Upload</button>
+</form>
+<script src="/js/upload.js"></script>
+<%- include('partials/footer') %>

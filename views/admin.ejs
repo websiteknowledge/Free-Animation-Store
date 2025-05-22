@@ -1,0 +1,26 @@
+<%- include('partials/header', { title: 'Dashboard' }) %>
+<h1>Admin Dashboard</h1>
+<a href="/admin/upload" class="download-btn">Upload New Video</a>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th><th>Thumbnail</th><th>Download</th><th>Edit</th><th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% videos.forEach(video => { %>
+      <tr>
+        <td><%= video.title %></td>
+        <td><img src="/videos/<%= video.thumbnail %>" width="100" /></td>
+        <td><a href="/videos/<%= video.filename %>" download>Download</a></td>
+        <td><a href="/admin/edit/<%= video.id %>">Edit</a></td>
+        <td>
+          <form action="/admin/delete/<%= video.id %>" method="POST">
+            <button type="submit">Delete</button>
+          </form>
+        </td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+<%- include('partials/footer') %>
